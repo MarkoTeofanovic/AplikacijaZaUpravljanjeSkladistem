@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AplikacijaZaUpravljanjeSkladistem.Tests/AplikacijaZaUpravljanjeSkladistem.Tests.csproj" />
+  <Project Path="AplikacijaZaUpravljanjeSkladistem/AplikacijaZaUpravljanjeSkladistem.csproj" />
+</Solution>
