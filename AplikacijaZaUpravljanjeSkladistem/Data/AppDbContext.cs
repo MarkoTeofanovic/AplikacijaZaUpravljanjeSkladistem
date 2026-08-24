@@ -52,5 +52,16 @@ public class AppDbContext : DbContext
             new Kategorija { Id = 3, Naziv = "Kancelarijski materijal" },
             new Kategorija { Id = 4, Naziv = "Ostalo" }
         );
+
+        // Podrazumevani nalog: admin / admin123
+        modelBuilder.Entity<Korisnik>().HasData(
+            new Korisnik
+            {
+                Id = 1,
+                KorisnickoIme = "admin",
+                LozinkaHash = "240BE518FABD2724DDB6F04EEB1DA5967448D7E831C08C8FA822809F74C720A9",
+                Uloga = UlogaKorisnika.Administrator
+            }
+        );
     }
 }
