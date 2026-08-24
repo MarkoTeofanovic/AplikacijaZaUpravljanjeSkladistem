@@ -45,5 +45,12 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(s => s.ProizvodId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Kategorija>().HasData(
+            new Kategorija { Id = 1, Naziv = "Elektronika" },
+            new Kategorija { Id = 2, Naziv = "Alat" },
+            new Kategorija { Id = 3, Naziv = "Kancelarijski materijal" },
+            new Kategorija { Id = 4, Naziv = "Ostalo" }
+        );
     }
 }
