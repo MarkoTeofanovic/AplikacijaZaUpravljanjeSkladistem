@@ -1,0 +1,11 @@
+<UserControl x:Class="AplikacijaZaUpravljanjeSkladistem.Views.ExportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="16">
+        <TextBlock Text="JSON" FontWeight="Bold" Margin="0,0,0,6"/>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+            <Button Content="Izvoz u JSON" Width="140" Margin="0,0,8,0" Command="{Binding IzvozJsonCommand}"/>
+            <Button Content="Uvoz iz JSON" Width="140" Command="{Binding UvozJsonCommand}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

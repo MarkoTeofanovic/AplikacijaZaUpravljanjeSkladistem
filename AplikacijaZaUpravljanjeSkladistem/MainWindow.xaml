@@ -11,5 +11,8 @@
         <TabItem Header="Nalozi">
             <views:NalogListView/>
         </TabItem>
+        <TabItem Header="Izvoz/uvoz">
+            <views:ExportView/>
+        </TabItem>
     </TabControl>
 </Window>
