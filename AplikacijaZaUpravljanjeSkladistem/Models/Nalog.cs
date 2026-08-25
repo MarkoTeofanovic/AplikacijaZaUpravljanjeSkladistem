@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AplikacijaZaUpravljanjeSkladistem.Models;
 
 public enum TipNaloga
@@ -18,6 +20,9 @@ public abstract class Nalog
 
     // Kompozicija: Nalog - StavkaNaloga
     public List<StavkaNaloga> Stavke { get; set; } = new();
+
+    [NotMapped]
+    public string Tip => GetType().Name;
 }
 
 // Nasledjivanje: prijem robe u skladiste
