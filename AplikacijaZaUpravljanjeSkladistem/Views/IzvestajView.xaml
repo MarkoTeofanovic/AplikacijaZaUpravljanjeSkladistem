@@ -1,0 +1,8 @@
+<UserControl x:Class="AplikacijaZaUpravljanjeSkladistem.Views.IzvestajView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="16">
+        <TextBlock Text="Izvestaj o stanju zaliha" FontWeight="Bold" Margin="0,0,0,10"/>
+        <Button Content="Generisi PDF izvestaj" Width="180" HorizontalAlignment="Left" Command="{Binding GenerisiCommand}"/>
+    </StackPanel>
+</UserControl>

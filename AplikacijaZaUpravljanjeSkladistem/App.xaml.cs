@@ -1,5 +1,6 @@
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 using AplikacijaZaUpravljanjeSkladistem.Data;
 using AplikacijaZaUpravljanjeSkladistem.Views;
 
@@ -10,6 +11,8 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+
+        QuestPDF.Settings.License = LicenseType.Community;
 
         // Sprecava gasenje aplikacije kad se zatvori prozor za prijavu
         ShutdownMode = ShutdownMode.OnExplicitShutdown;
