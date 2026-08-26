@@ -7,5 +7,11 @@
             <Button Content="Izvoz u JSON" Width="140" Margin="0,0,8,0" Command="{Binding IzvozJsonCommand}"/>
             <Button Content="Uvoz iz JSON" Width="140" Command="{Binding UvozJsonCommand}"/>
         </StackPanel>
+
+        <TextBlock Text="XML" FontWeight="Bold" Margin="0,0,0,6"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Izvoz u XML" Width="140" Margin="0,0,8,0" Command="{Binding IzvozXmlCommand}"/>
+            <Button Content="Uvoz iz XML" Width="140" Command="{Binding UvozXmlCommand}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

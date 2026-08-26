@@ -13,11 +13,15 @@ public class ExportViewModel : ViewModelBase
 {
     public RelayCommand IzvozJsonCommand { get; }
     public RelayCommand UvozJsonCommand { get; }
+    public RelayCommand IzvozXmlCommand { get; }
+    public RelayCommand UvozXmlCommand { get; }
 
     public ExportViewModel()
     {
         IzvozJsonCommand = new RelayCommand(_ => Izvezi(new JsonExportStrategija(), "JSON datoteke (*.json)|*.json", "json"));
         UvozJsonCommand = new RelayCommand(_ => Uvezi(new JsonExportStrategija(), "JSON datoteke (*.json)|*.json"));
+        IzvozXmlCommand = new RelayCommand(_ => Izvezi(new XmlExportStrategija(), "XML datoteke (*.xml)|*.xml", "xml"));
+        UvozXmlCommand = new RelayCommand(_ => Uvezi(new XmlExportStrategija(), "XML datoteke (*.xml)|*.xml"));
     }
 
     private void Izvezi(IExportStrategija strategija, string filter, string ekstenzija)
