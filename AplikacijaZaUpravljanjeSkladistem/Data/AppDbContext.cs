@@ -5,6 +5,7 @@ using AplikacijaZaUpravljanjeSkladistem.Models;
 
 namespace AplikacijaZaUpravljanjeSkladistem.Data;
 
+// Entity Framework: entiteti povezani relacijama, CRUD operacije preko DbSet-ova
 public class AppDbContext : DbContext
 {
     public DbSet<Kategorija> Kategorije => Set<Kategorija>();
