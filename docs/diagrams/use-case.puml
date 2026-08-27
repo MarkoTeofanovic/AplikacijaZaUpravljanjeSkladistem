@@ -1,0 +1,29 @@
+@startuml use-case
+left to right direction
+
+actor Korisnik
+actor Administrator
+actor Magacioner
+Administrator --|> Korisnik
+Magacioner --|> Korisnik
+
+rectangle "Aplikacija za upravljanje skladistem" {
+  usecase "Prijava korisnika" as UC1
+  usecase "Kreiranje proizvoda" as UC2
+  usecase "Izmena i brisanje proizvoda" as UC3
+  usecase "Pregled i pretraga proizvoda" as UC4
+  usecase "Kreiranje naloga sa stavkama" as UC5
+  usecase "Izvoz i uvoz podataka (JSON/XML)" as UC6
+  usecase "Generisanje PDF izvestaja" as UC7
+}
+
+Korisnik --> UC1
+Korisnik --> UC2
+Korisnik --> UC3
+Korisnik --> UC4
+Korisnik --> UC5
+Korisnik --> UC6
+Korisnik --> UC7
+
+UC5 ..> UC4 : <<include>>
+@enduml

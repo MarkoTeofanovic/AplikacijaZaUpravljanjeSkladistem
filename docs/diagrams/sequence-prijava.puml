@@ -1,0 +1,25 @@
+@startuml sequence-prijava
+actor Korisnik
+participant "LoginWindow" as View
+participant "LoginViewModel" as VM
+participant "AuthServis" as Servis
+database "Baza (SQLite)" as Baza
+
+Korisnik -> View : unosi korisnicko ime i lozinku
+Korisnik -> View : klik na "Prijavi se"
+View -> VM : PrijaviSeCommand.Execute()
+VM -> Servis : PrijaviSe(korisnickoIme, lozinka)
+Servis -> Servis : Hesiraj(lozinka)
+Servis -> Baza : SELECT Korisnik WHERE KorisnickoIme, LozinkaHash
+Baza --> Servis : Korisnik ili null
+
+alt korisnik pronadjen
+  Servis --> VM : Korisnik
+  VM -> VM : SesijaServis.TrenutniKorisnik = Korisnik
+  VM --> View : ZatvoriProzor (uspesno)
+  View --> Korisnik : prikaz glavnog prozora
+else korisnik nije pronadjen
+  Servis --> VM : null
+  VM --> View : Poruka = "Pogresno korisnicko ime ili lozinka"
+end
+@enduml

@@ -1,0 +1,27 @@
+@startuml sequence-nalog
+actor Korisnik
+participant "NalogDetaljiWindow" as View
+participant "NalogDetaljiViewModel" as VM
+participant "NalogFactory" as Factory
+database "Baza (SQLite)" as Baza
+
+Korisnik -> View : bira tip naloga, unosi broj i partnera
+Korisnik -> View : bira proizvod i kolicinu, klik "Dodaj"
+View -> VM : DodajStavkuCommand.Execute()
+VM -> VM : Stavke.Add(StavkaUnosa)
+
+Korisnik -> View : klik "Sacuvaj"
+View -> VM : SacuvajCommand.Execute()
+VM -> Factory : Kreiraj(Tip)
+Factory --> VM : Prijemnica / Otpremnica
+
+loop za svaku stavku
+  VM -> VM : nalog.Stavke.Add(StavkaNaloga)
+  VM -> VM : Proizvod.KolicinaNaStanju += / -= Kolicina
+end
+
+VM -> Baza : SaveChanges()
+Baza --> VM : potvrda
+VM --> View : ZatvoriProzor (uspesno)
+View --> Korisnik : prikaz azuriranog spiska naloga
+@enduml

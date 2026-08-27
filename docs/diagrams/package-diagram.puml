@@ -1,0 +1,17 @@
+@startuml package-diagram
+package "AplikacijaZaUpravljanjeSkladistem" {
+  package Models
+  package Data
+  package Services
+  package ViewModels
+  package Views
+}
+
+Views ..> ViewModels : koristi
+ViewModels ..> Services : koristi
+ViewModels ..> Data : koristi
+ViewModels ..> Models : koristi
+Services ..> Models : koristi
+Services ..> Data : koristi
+Data ..> Models : koristi
+@enduml

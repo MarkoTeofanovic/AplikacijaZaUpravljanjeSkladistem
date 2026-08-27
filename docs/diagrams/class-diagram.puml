@@ -1,0 +1,96 @@
+@startuml class-diagram
+skinparam classAttributeIconSize 0
+
+class Kategorija {
+  +int Id
+  +string Naziv
+  +string Opis
+}
+
+class Proizvod {
+  +int Id
+  +string Naziv
+  +string Sifra
+  +decimal Cena
+  +int KolicinaNaStanju
+}
+
+enum UlogaKorisnika {
+  Administrator
+  Magacioner
+}
+
+class Korisnik {
+  +int Id
+  +string KorisnickoIme
+  +string LozinkaHash
+  +UlogaKorisnika Uloga
+}
+
+abstract class Nalog {
+  +int Id
+  +string BrojNaloga
+  +DateTime Datum
+  +string Tip
+}
+
+class Prijemnica {
+  +string Dobavljac
+}
+
+class Otpremnica {
+  +string Primalac
+}
+
+class StavkaNaloga {
+  +int Id
+  +int Kolicina
+}
+
+interface IExportStrategija {
+  +Izvezi(stavke, putanja)
+  +Uvezi(putanja) : List<ProizvodExportDto>
+}
+
+class JsonExportStrategija
+class XmlExportStrategija
+
+class ProizvodExportDto {
+  +int Id
+  +string Naziv
+  +string Sifra
+  +decimal Cena
+  +int KolicinaNaStanju
+  +string Kategorija
+}
+
+class NalogFactory {
+  +{static} Kreiraj(tip : TipNaloga) : Nalog
+}
+
+class AuthServis {
+  +{static} Hesiraj(lozinka : string) : string
+  +PrijaviSe(korisnickoIme, lozinka) : Korisnik
+}
+
+class IzvestajServis {
+  +GenerisiIzvestajZaliha(putanja : string)
+}
+
+Kategorija "1" o-- "*" Proizvod : sadrzi
+Nalog "1" *-- "*" StavkaNaloga : sadrzi
+StavkaNaloga --> "1" Proizvod
+Nalog --> "1" Korisnik : kreirao
+Korisnik --> UlogaKorisnika
+
+Prijemnica --|> Nalog
+Otpremnica --|> Nalog
+
+JsonExportStrategija ..|> IExportStrategija
+XmlExportStrategija ..|> IExportStrategija
+IExportStrategija ..> ProizvodExportDto
+
+NalogFactory ..> Nalog : <<creates>>
+AuthServis --> Korisnik
+IzvestajServis --> Proizvod
+@enduml
