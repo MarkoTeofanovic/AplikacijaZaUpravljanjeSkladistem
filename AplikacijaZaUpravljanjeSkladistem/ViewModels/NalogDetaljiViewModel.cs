@@ -68,8 +68,9 @@ public class NalogDetaljiViewModel : ViewModelBase
 
     public NalogDetaljiViewModel()
     {
-        using (var kontekst = new AppDbContext())
+        if (!DizajnMod)
         {
+            using var kontekst = new AppDbContext();
             foreach (var proizvod in kontekst.Proizvodi.OrderBy(p => p.Naziv))
                 Proizvodi.Add(proizvod);
         }

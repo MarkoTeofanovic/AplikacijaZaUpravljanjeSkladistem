@@ -48,7 +48,8 @@ public class ProizvodListViewModel : ViewModelBase
         IzmeniCommand = new RelayCommand(_ => OtvoriDijalog(Izabran), _ => Izabran != null);
         ObrisiCommand = new RelayCommand(_ => Obrisi(), _ => Izabran != null);
 
-        Ucitaj();
+        if (!DizajnMod)
+            Ucitaj();
     }
 
     private bool Filtriraj(object obj)

@@ -56,8 +56,9 @@ public class ProizvodDetaljiViewModel : ViewModelBase
 
     public ProizvodDetaljiViewModel(Proizvod? postojeci)
     {
-        using (var kontekst = new AppDbContext())
+        if (!DizajnMod)
         {
+            using var kontekst = new AppDbContext();
             foreach (var kategorija in kontekst.Kategorije.OrderBy(k => k.Naziv))
                 Kategorije.Add(kategorija);
         }

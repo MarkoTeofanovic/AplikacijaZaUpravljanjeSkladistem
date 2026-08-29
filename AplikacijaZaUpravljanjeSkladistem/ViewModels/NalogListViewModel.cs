@@ -17,7 +17,9 @@ public class NalogListViewModel : ViewModelBase
     public NalogListViewModel()
     {
         NoviNalogCommand = new RelayCommand(_ => NoviNalog());
-        Ucitaj();
+
+        if (!DizajnMod)
+            Ucitaj();
     }
 
     private void Ucitaj()
